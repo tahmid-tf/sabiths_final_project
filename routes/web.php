@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 //use App\Http\Controllers\ContentController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,25 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::resource('content', ContentController::class);
+// ------------------------------- admin routes -------------------------------------------
+
+Route::middleware('auth')->group(function (){
+    Route::resource('content', ContentController::class);
+    Route::get('feedback', 'InformationController@index')->name('feedback');
+});
+
+// ------------------------------- admin routes -------------------------------------------
+
+
+
+Route::resource('contact', ContactController::class);
+
+Route::get('details', function (){
+    $contents = \App\Content::all();
+    return view('user.details.details', compact('contents'));
+});
+
+Route::get('logout', function (){
+    Auth::logout();
+    return redirect('/');
+})->name('logout');
