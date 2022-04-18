@@ -57,7 +57,7 @@
     <div class="row">
         <div class="col-md-5 left-side">
             <div class="card bg-transparent border-0 m-auto" style="width: 18rem;">
-                <img src="profile-pic.jpg" class="card-img-top card-img-custom" alt="...">
+                <img src="{{ asset('img/sabith.jpg') }}" class="card-img-top card-img-custom" alt="...">
                 <div class="card-body">
                     <h5 class="card-title card-title-custom">Sabith Ahmed</h5>
                     <hr>
